@@ -17,6 +17,11 @@ except Exception:
 app = create_app()
 
 if __name__ == '__main__':
-    host = os.environ.get('BACKEND_HOST', '127.0.0.1')
-    port = int(os.environ.get('BACKEND_PORT') or os.environ.get('PORT', '5001'))
-    app.run(host=host, port=port, debug=True)
+
+    # Azure 환경을 위한 설정 (로컬과 호환)
+    host = os.environ.get('BACKEND_HOST', '0.0.0.0')  # 기본값을 0.0.0.0으로 변경
+    port = int(os.environ.get('BACKEND_PORT') or os.environ.get('PORT', '8000'))  # 기본 포트 8000
+    debug = os.environ.get('FLASK_ENV') == 'development'  # 환경변수로 debug 제어
+    
+    app.run(host=host, port=port, debug=debug)
+
