@@ -951,8 +951,8 @@ export default function DocentMantine() {
   };
 
   const callTourismAPI = async (userQuery) => {
-    const functionUrl =
-      "https://team03-function-cce6cugxacd3aqcs.eastus-01.azurewebsites.net/api/tourismqnaapi?code=BcqZANgpmolF-eQNAkdB4BgrhINolY8tLktSFVRHhaGhAzFu3b1_Tw==";
+    const functionKey = process.env.REACT_APP_AZURE_FUNCTION_KEY;
+    const functionUrl = `https://team03-function-cce6cugxacd3aqcs.eastus-01.azurewebsites.net/api/tourismqnaapi?code=${functionKey}`;
     try {
       const response = await fetch(functionUrl, {
         method: "POST",
@@ -1275,7 +1275,7 @@ export default function DocentMantine() {
             </div>
           </div>
         </div>
-  
+
         <div className="flex-1 flex flex-col min-h-0">
           <div className="h-[60%] flex min-h-0">
             <div className="w-80 flex-shrink-0 min-w-0">
@@ -1302,7 +1302,7 @@ export default function DocentMantine() {
                 </div>
               </NeonCardJH>
             </div>
-            
+
             {/* ★★★ 여기가 진짜 수정 지점입니다! ★★★ */}
             {/* 지도 패널의 너비를 w-[520px] 대신 flex-1로 변경하여 남은 공간을 모두 차지하게 합니다. */}
             <div className="flex-1 relative min-w-0 min-h-0 m-3">
@@ -1324,7 +1324,7 @@ export default function DocentMantine() {
                 />
               </div>
             </div>
-            
+
             <div className="w-80 flex-shrink-0 min-w-0">
               <NeonCardJH className="h-full">
                 <div className="p-3 pb-0 h-full">
